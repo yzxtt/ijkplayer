@@ -5,6 +5,26 @@ Video player based on [ffplay](http://ffmpeg.org)
 ![](https://github.com/befovy/ijkplayer/workflows/Android%20CI/badge.svg?branch=master)
 
 
+### 注意事项
+环境依赖 NDK16、Java11 
+```
+// 设置 NDK 对应版本环境变量(地址根据自己环境调整)
+export ANDROID_NDK=/XXX/android-sdk/ndk/16.1.4479499/
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+
+// 编译 ffmpeg
+cd android/contrib
+./compile-ffmpeg.sh clean
+./compile-ffmpeg.sh all
+
+// 编译 ijkplayer
+cd ../ijkplayer
+./gradlew build
+./gradlew :fijkplayer-full:assembleRelease
+
+// 之后复制 android/ijkplayer/fijkplayer-full/build/outputs/aar/*.arr 文件到 fijkplayer 项目中使用
+```
+
 ### Download
 
 - Android:
